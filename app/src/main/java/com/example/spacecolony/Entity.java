@@ -9,13 +9,13 @@ public abstract class Entity {
     private int maxEnergy;
     private boolean isDefeated;
 
-    public Entity(String name, String type, int skill, int resilience, int energy, int maxEnergy) {
+    public Entity(String name, String type, int skill, int resilience, int maxEnergy) {
         this.name = name;
         this.type = type;
         this.skill = skill;
         this.resilience = resilience;
-        this.energy = energy;
         this.maxEnergy = maxEnergy;
+        this.energy = maxEnergy;
         this.isDefeated = false;
     }
 
@@ -45,6 +45,10 @@ public abstract class Entity {
 
     public int getEnergy(){
         return energy;
+    }
+
+    public void setEnergy(int energy){
+        this.energy = energy;
     }
 
     public void loseEnergy(int energyLose) {
