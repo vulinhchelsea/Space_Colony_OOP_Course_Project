@@ -29,34 +29,4 @@ public class CrewMember extends Entity{
     public void attack(){
 
     }
-
-    public class Pilot extends CrewMember{
-        public Pilot(String name){
-            super(name,"Pilot",5,4,20,"AbilityA");
-        }
-    }
-
-    public class Engineer extends CrewMember{
-        public Engineer(String name){
-            super(name,"Engineer",6,3,19,"AbilityB");
-        }
-    }
-
-    public class Medic extends CrewMember{
-        public Medic(String name){
-            super(name,"Medic",7,2,18,"AbilityC");
-        }
-    }
-
-    public class Scientist extends CrewMember{
-        public Scientist(String name){
-            super(name,"Scientist",8,1,17,"AbilityD");
-        }
-    }
-
-    public class Soldier extends CrewMember{
-        public Soldier(String name){
-            super(name,"Soldier",9,0,16,"AbilityE");
-        }
-    }
 }
