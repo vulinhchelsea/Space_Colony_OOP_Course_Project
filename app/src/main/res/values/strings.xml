@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Space Colony</string>
+    <string name="cd_table">Colony Table</string>
+    <string name="cd_record">Colony Records</string>
+    <string name="cd_recruitment">Recruitment Office</string>
+    <string name="cd_training">Training Center</string>
+    <string name="cd_team">Team Management</string>
+    <string name="cd_mission_control">Mission Control</string>
+    <string name="cd_medbay">Medbay</string>
 </resources>
