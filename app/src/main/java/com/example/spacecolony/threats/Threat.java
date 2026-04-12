@@ -1,6 +1,9 @@
-package com.example.spacecolony;
+package com.example.spacecolony.threats;
 
-public class Threat extends Entity{
+import com.example.spacecolony.Entity;
+import com.example.spacecolony.crewmembers.CrewMember;
+
+public class Threat extends Entity {
     String weakness;
     int piece;
 

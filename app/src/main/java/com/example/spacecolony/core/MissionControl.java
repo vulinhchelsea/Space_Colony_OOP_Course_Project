@@ -1,5 +1,7 @@
-package com.example.spacecolony;
+package com.example.spacecolony.core;
 
+import com.example.spacecolony.threats.Threat;
+import com.example.spacecolony.crewmembers.CrewMember;
 import com.example.spacecolony.threats.AsteroidStorm;
 import com.example.spacecolony.threats.Biohazard;
 import com.example.spacecolony.threats.Droid;

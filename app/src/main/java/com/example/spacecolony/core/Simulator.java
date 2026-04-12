@@ -1,4 +1,6 @@
-package com.example.spacecolony;
+package com.example.spacecolony.core;
+
+import com.example.spacecolony.crewmembers.CrewMember;
 
 public class Simulator {
     public boolean inCoolDown = false;

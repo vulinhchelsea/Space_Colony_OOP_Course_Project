@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#E0E0E0">
+
+            <ImageView
+                android:id="@+id/img_recruit_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/txt_recruit_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: Unknown"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A1A" />
+
+            <TextView
+                android:id="@+id/txt_recruit_role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role: Soldier"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/txt_recruit_stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HP: 100 | ATK: 15 | DEF: 10"
+                android:textSize="13sp"
+                android:layout_marginTop="6dp"
+                android:textColor="#2E7D32"
+                android:fontFamily="monospace"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_recruit_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RECRUIT"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:backgroundTint="#212121"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="12dp"
+            app:cornerRadius="10dp"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

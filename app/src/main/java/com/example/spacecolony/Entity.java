@@ -1,6 +1,8 @@
 package com.example.spacecolony;
 
-public abstract class Entity {
+import java.io.Serializable;
+
+public abstract class Entity implements Serializable {  // serialize for data storage
     private String name;
     private String type;
     private int skill;
@@ -69,5 +71,9 @@ public abstract class Entity {
 
     public void setDefeated(boolean isDefeated){
         this.isDefeated = isDefeated;
+    }
+
+    public String getType(){
+        return type;
     }
 }

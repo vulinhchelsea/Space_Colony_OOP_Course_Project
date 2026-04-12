@@ -1,6 +1,8 @@
-package com.example.spacecolony;
+package com.example.spacecolony.crewmembers;
 
-public class CrewMember extends Entity{
+import com.example.spacecolony.Entity;
+
+public class CrewMember extends Entity {
     private int exp;
     private String specialAbility;
 

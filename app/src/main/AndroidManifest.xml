@@ -12,10 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceColony">
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="landscape"
+            android:name=".activities.RecruitmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RecruimentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TeamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TrainingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MedBayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
