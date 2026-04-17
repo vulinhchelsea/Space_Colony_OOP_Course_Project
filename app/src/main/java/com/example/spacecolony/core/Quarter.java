@@ -1,52 +1,23 @@
 package com.example.spacecolony.core;
 
 import android.content.Context;
-
-import com.example.spacecolony.crewmembers.CrewMember;
-import com.example.spacecolony.crewmembers.Engineer;
-import com.example.spacecolony.crewmembers.Medic;
-import com.example.spacecolony.crewmembers.Pilot;
-import com.example.spacecolony.crewmembers.Scientist;
-import com.example.spacecolony.crewmembers.Soldier;
+import com.example.spacecolony.crewmembers.*;
 import com.example.spacecolony.util.Storage;
-
 import java.util.Random;
 
-
 public class Quarter {
-    private int pieceCount;
-
-    // create crew member
-    public void createCrewMember(Context context, CrewMember cm) {
-        Storage.addCrewMember(context, cm);
-    }
-
-    public void restoreEnergy(CrewMember cm) {
-        cm.setEnergy(cm.getMaxEnergy());
-    }
-
-    // count crew member
-    public int countCrewMember(Context context) {
-        return Storage.countCrewMembers(context);
-    }
-    public void resetCrewMember(CrewMember cm) {
-        cm.resetMember();
-    }
-
-    // generate random crew for recruitment
+    public void recruitMember(Context c, CrewMember m) { Storage.addCrewMember(c, m); }
+    
     public CrewMember generateRandomCandidate() {
-        String[] names = {"Linh Vu", "Hai Anh", "Kevin"};
-        Random random = new Random();
-
-        String name = names[random.nextInt(names.length)] + " " + random.nextInt(100);
+        String[] names = {"Nova", "Rex", "Aria", "Kael", "Luna", "Silas", "Zane"};
+        Random rand = new Random();
+        String name = names[rand.nextInt(names.length)] + "-" + (rand.nextInt(900) + 100);
         
-        int typeChoice = random.nextInt(5);
-        switch (typeChoice) {
-            case 0: return new Medic(name);
-            case 2: return new Engineer(name);
-            case 3: return new Scientist(name);
-            case 4: return new Pilot(name);
-            default: return new Soldier(name);
-        }
+        int r = rand.nextInt(5);
+        if (r == 0) return new Medic(name);
+        if (r == 1) return new Pilot(name);
+        if (r == 2) return new Engineer(name);
+        if (r == 3) return new Scientist(name);
+        return new Soldier(name);
     }
 }

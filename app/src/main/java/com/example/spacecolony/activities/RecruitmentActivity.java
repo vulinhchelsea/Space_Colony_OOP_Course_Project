@@ -1,69 +1,80 @@
 package com.example.spacecolony.activities;
 
 import android.os.Bundle;
-import android.widget.Button;
-
+import android.view.View;
+import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.spacecolony.R;
 import com.example.spacecolony.adapters.RecruitAdapter;
-import com.example.spacecolony.core.Quarter;
-import com.example.spacecolony.crewmembers.CrewMember;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
+import com.example.spacecolony.core.Simulator;
+import com.example.spacecolony.crewmembers.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecruitmentActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
+    private final Simulator sim = new Simulator();
+    private final List<CrewMember> list = new ArrayList<>();
     private RecruitAdapter adapter;
-    private List<CrewMember> candidates;
-    private Quarter quarter;
+    private TextView tv;
 
-    // UI elements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_recruitment);
         
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        tv = findViewById(R.id.tv_recruit_status);
+        View left = findViewById(R.id.left_container);
+        if (left != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(left, (v, insets) -> {
+                Insets s = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(s.left, s.top, 0, s.bottom);
+                return insets;
+            });
+        }
 
-        quarter = new Quarter();
-        setupRecyclerView();
+        RecyclerView rv = findViewById(R.id.recycler_recruitment);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         
-        FloatingActionButton btnBack = findViewById(R.id.btn_back);
-        btnBack.setOnClickListener(v -> finish());
-
-        generateCandidates();
+        adapter = new RecruitAdapter(this, list, () -> {
+            if (sim.isRecruitAvailable(this)) {
+                sim.useRecruit(this);
+                refresh();
+            }
+        });
+        rv.setAdapter(adapter);
+        
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
+        findViewById(R.id.btn_help).setOnClickListener(v -> showHelp());
+        refresh();
     }
 
-    // recycler view
-    private void setupRecyclerView() {
-        recyclerView = findViewById(R.id.recycler_recruitment);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        candidates = new ArrayList<>();
-        adapter = new RecruitAdapter(this, candidates);
-        recyclerView.setAdapter(adapter);
-    }
-
-
-    private void generateCandidates() {
-        // generate 5 random candidates for the player to choose from
-        for (int i = 0; i < 5; i++) {
-            candidates.add(quarter.generateRandomCandidate());
+    private void refresh() {
+        boolean ok = sim.isRecruitAvailable(this);
+        tv.setText(ok ? "open" : "closed...");
+        list.clear();
+        if (ok) {
+            list.add(new Medic(""));
+            list.add(new Soldier(""));
+            list.add(new Pilot(""));
+            list.add(new Engineer(""));
+            list.add(new Scientist(""));
         }
         adapter.notifyDataSetChanged();
+    }
+
+    private void showHelp() {
+        new AlertDialog.Builder(this)
+            .setTitle("Recruitment Help")
+            .setMessage("Hire new members for your colony. Each class has different base stats. Recruitment has a cooldown after each hire.")
+            .setPositiveButton("OK", null)
+            .show();
     }
 }

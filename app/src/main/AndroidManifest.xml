@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceColony">
         <activity
+            android:name=".activities.CombatPage"
+            android:exported="false" />
+        <activity
             android:name=".activities.RecruitmentActivity"
             android:exported="false" />
         <activity

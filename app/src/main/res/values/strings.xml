@@ -7,4 +7,15 @@
     <string name="cd_team">Team Management</string>
     <string name="cd_mission_control">Mission Control</string>
     <string name="cd_medbay">Medbay</string>
+
+    <string name="mission_title">Mission</string>
+    <string name="threats_label">Threats</string>
+    <string name="restraint_hint_label">Restraint\nRelation Hint</string>
+    <string name="start_button">START</string>
+    <string name="enemy_status_placeholder">Lv 0\nHP 0</string>
+
+    <string name="cd_mission_graphic">Mission Graphic</string>
+    <string name="cd_enemy_icon">Enemy Icon</string>
+    <string name="cd_restraint_hint">Restraint Hint Image</string>
+    <string name="cd_select_member">Select Crew Member</string>
 </resources>

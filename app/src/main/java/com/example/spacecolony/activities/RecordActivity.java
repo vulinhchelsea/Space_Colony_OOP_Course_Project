@@ -2,72 +2,46 @@ package com.example.spacecolony.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.spacecolony.R;
 import com.example.spacecolony.util.Storage;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class RecordActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_record);
+
+        // load status
+        ((TextView) findViewById(R.id.txt_recruit_count)).setText("recruited " + Storage.getTotalRecruited(this) + " members");
+        ((TextView) findViewById(R.id.txt_kill_count)).setText("killed 0 enemies");
         
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        TextView missionTxt = findViewById(R.id.txt_mission_count);
+        if (missionTxt != null) missionTxt.setText("accomplished " + Storage.getCompletedMissions(this) + " missions");
+
+        findViewById(R.id.btn_reset_game).setOnClickListener(v -> showReset());
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
+    }
+
+    private void showReset() {
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        View v = getLayoutInflater().inflate(R.layout.layout_reset_bottom_sheet, null);
+        
+        v.findViewById(R.id.btn_confirm_reset).setOnClickListener(view -> {
+            Storage.clearData(this);
+            dialog.dismiss();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
-
-        setupUI();
-    }
-
-    private void setupUI() {
-        TextView txtRecruitCount = findViewById(R.id.txt_recruit_count);
-        TextView txtKillCount = findViewById(R.id.txt_kill_count);
-        Button btnReset = findViewById(R.id.btn_reset_game);
-
-        // display current stats
-        int count = Storage.countCrewMembers(this);
-        txtRecruitCount.setText("Recruit " + count + " crew members");
-        txtKillCount.setText("kill 0" + " enemies"); // Placeholder for now
-
-        btnReset.setOnClickListener(v -> showResetConfirmation());
         
-        // setup back button if visible
-        FloatingActionButton btnBack = findViewById(R.id.btn_back);
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
-        }
-    }
-
-    // message for reset confirmation
-    private void showResetConfirmation() {
-        new AlertDialog.Builder(this)
-                .setTitle("Abandon Colony?")
-                .setMessage("Are you sure you want to restart? All crew members and mission progress will be lost forever.")
-                .setPositiveButton("RESTART", (dialog, which) -> {
-                    Storage.clearAllData(this);
-                    
-                    // restart the app by going to MainActivity and clearing task stack
-                    Intent intent = new Intent(this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                })
-                .setNegativeButton("CANCEL", null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+        v.findViewById(R.id.btn_cancel_reset).setOnClickListener(view -> dialog.dismiss());
+        dialog.setContentView(v);
+        dialog.show();
     }
 }

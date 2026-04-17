@@ -10,8 +10,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.spacecolony.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,67 +21,57 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // initialize clicking area
+        // setup areas
         setupArea(R.id.img_medbay, MedBayActivity.class);
         setupArea(R.id.img_training, TrainingActivity.class);
         setupArea(R.id.img_missioncontrol, MissionActivity.class);
         setupArea(R.id.img_team, TeamActivity.class);
         setupArea(R.id.img_record, RecordActivity.class);
         setupArea(R.id.img_recruitment, RecruitmentActivity.class);
+        
+        findViewById(R.id.btn_help).setOnClickListener(v -> showHelp());
     }
 
-    // accessibility function
-    @SuppressLint("ClickableViewAccessibility")
-    // setupArea function for all image
-    private void setupArea(int viewId, Class<?> targetActivity) {
-        ImageView imageView = findViewById(viewId);
-        if (imageView == null) return;
+    private void showHelp() {
+        new AlertDialog.Builder(this)
+            .setTitle("Main Menu Help")
+            .setMessage("Welcome to Space Colony! Click on the rooms to manage your base:\n\n- Medical: Heal injured crew.\n- Training: Level up skills.\n- Control: Start missions.\n- Team: View your crew.\n- Recruitment: Get new members.\n- Record: View stats.")
+            .setPositiveButton("Got it", null)
+            .show();
+    }
 
-        imageView.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (isTouchOnSprite(v, event)) {
-                    v.performClick();
-                    // start target activity, screen transition
-                    Intent intent = new Intent(MainActivity.this, targetActivity);
-                    startActivity(intent);
-                    return true;
-                }
+    @SuppressLint("ClickableViewAccessibility")
+    private void setupArea(int id, Class<?> target) {
+        ImageView iv = findViewById(id);
+        if (iv == null) return;
+
+        iv.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN && isPixelTransparent(v, event)) {
+                v.performClick();
+                startActivity(new Intent(this, target));
+                return true;
             }
             return false;
         });
     }
 
-    // function for on touch filter
-    private boolean isTouchOnSprite(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            ImageView imageView = (ImageView) v;
-            Drawable drawable = imageView.getDrawable();
-            if (drawable == null) return false;
+    private boolean isPixelTransparent(View v, MotionEvent e) {
+        Drawable d = ((ImageView) v).getDrawable();
+        if (d == null) return false;
 
-            Bitmap bitmap;
-
-            // drawable checking
-            if (drawable instanceof BitmapDrawable) {
-                bitmap = ((BitmapDrawable) drawable).getBitmap();
-            } else {
-                bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
-                        drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                android.graphics.Canvas canvas = new android.graphics.Canvas(bitmap);
-                drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-                drawable.draw(canvas);
-            }
-
-            // pixel color checking
-            float x = event.getX() * bitmap.getWidth() / v.getWidth();
-            float y = event.getY() * bitmap.getHeight() / v.getHeight();
-
-            if (x < 0 || x >= bitmap.getWidth() || y < 0 || y >= bitmap.getHeight()) {
-                return false;
-            }
-
-            int pixel = bitmap.getPixel((int) x, (int) y);
-            return Color.alpha(pixel) > 0;
+        Bitmap b;
+        if (d instanceof BitmapDrawable) b = ((BitmapDrawable) d).getBitmap();
+        else {
+            b = Bitmap.createBitmap(d.getIntrinsicWidth(), d.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            android.graphics.Canvas canvas = new android.graphics.Canvas(b);
+            d.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            d.draw(canvas);
         }
-        return false;
+
+        int x = (int) (e.getX() * b.getWidth() / v.getWidth());
+        int y = (int) (e.getY() * b.getHeight() / v.getHeight());
+        
+        if (x < 0 || x >= b.getWidth() || y < 0 || y >= b.getHeight()) return false;
+        return Color.alpha(b.getPixel(x, y)) > 0;
     }
 }

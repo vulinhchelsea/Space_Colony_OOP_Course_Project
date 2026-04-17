@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="12dp"
     android:layout_marginVertical="8dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="8dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:padding="16dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="#E0E0E0">
+            app:cardBackgroundColor="#E0E0E0"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
 
             <ImageView
                 android:id="@+id/img_avatar"
@@ -35,32 +34,32 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
+                android:textColor="#1A1A1A"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#1A1A1A" />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="2dp">
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txt_role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Role"
-                    android:textSize="14sp"
-                    android:textColor="#757575" />
+                    android:textColor="#757575"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txt_lv"
@@ -68,28 +67,28 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Lv. 1"
-                    android:textSize="14sp"
-                    android:textColor="#757575" />
+                    android:textColor="#757575"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txt_xp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="XP: 0"
-                    android:textSize="14sp"
-                    android:textColor="#757575" />
+                    android:text="EXP: 0"
+                    android:textColor="#757575"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/txt_stats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HP: 100/100 | ATK: 10 | DEF: 10"
-                android:textSize="13sp"
                 android:layout_marginTop="6dp"
-                android:textColor="#2E7D32"
                 android:fontFamily="monospace"
+                android:text="ENERGY: 20/20 | SKILL: 5 | RES: 4"
+                android:textColor="#2E7D32"
+                android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

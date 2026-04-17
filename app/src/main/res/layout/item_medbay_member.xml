@@ -25,7 +25,7 @@
             app:cardBackgroundColor="#E0E0E0">
 
             <ImageView
-                android:id="@+id/img_recruit_avatar"
+                android:id="@+id/img_medbay_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -40,47 +40,45 @@
             android:layout_marginStart="16dp">
 
             <TextView
-                android:id="@+id/txt_recruit_name"
+                android:id="@+id/txt_medbay_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: Unknown"
+                android:text="Name: ..."
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#1A1A1A" />
 
             <TextView
-                android:id="@+id/txt_recruit_role"
+                android:id="@+id/txt_medbay_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Role: Soldier"
+                android:text="Role: ..."
                 android:textSize="14sp"
-                android:textColor="#757575"
-                android:layout_marginTop="2dp" />
+                android:textColor="#757575" />
 
             <TextView
-                android:id="@+id/txt_recruit_stats"
+                android:id="@+id/txt_medbay_energy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HP: 100 | ATK: 15 | DEF: 10"
+                android:text="ENERGY: 0/100"
                 android:textSize="13sp"
                 android:layout_marginTop="6dp"
-                android:textColor="#2E7D32"
+                android:textColor="#D32F2F"
                 android:fontFamily="monospace"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_recruit_action"
+            android:id="@+id/btn_medbay_heal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RECRUIT"
+            android:text="HEAL"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:backgroundTint="#212121"
+            android:backgroundTint="#D32F2F"
             android:textColor="#FFFFFF"
             android:paddingHorizontal="12dp"
-            app:cornerRadius="0dp"
-            android:elevation="4dp" />
+            app:cornerRadius="0dp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
