@@ -27,11 +27,12 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_menu_help"
         android:clickable="true"
         android:focusable="true"
+        android:src="@drawable/hint_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:srcCompat="@drawable/hint_button" />
 
     <!-- record icon anchored to screen corners -->
     <ImageView

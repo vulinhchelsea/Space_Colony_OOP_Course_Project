@@ -34,13 +34,15 @@
                 android:textColor="#000000"
                 android:textSize="22sp"
                 android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/btn_help"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@android:drawable/ic_menu_help"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:src="@drawable/hint_button"
+                app:srcCompat="@drawable/hint_button" />
         </LinearLayout>
 
         <ScrollView
@@ -197,14 +199,15 @@
                         android:textColor="#388E3C"
                         android:textSize="12sp"
                         android:textStyle="bold" />
+
                     <Button
                         android:id="@+id/btn_crew_1_attack"
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
-                        android:text="ATK"
-                        android:textSize="10sp"
+                        android:backgroundTint="#212121"
                         android:paddingHorizontal="4dp"
-                        android:backgroundTint="#212121" />
+                        android:text="ATK"
+                        android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

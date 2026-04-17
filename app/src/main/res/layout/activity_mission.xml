@@ -68,12 +68,12 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="12dp"
-            android:src="@android:drawable/ic_menu_help"
-            android:contentDescription="Help"
             android:clickable="true"
+            android:contentDescription="Help"
             android:focusable="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:src="@drawable/hint_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvMissionTitle"
@@ -175,9 +175,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="8dp"
-                    android:scaleType="fitCenter"
                     android:contentDescription="Weakness Hint"
-                    android:src="@android:drawable/ic_dialog_info" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/weakness_table"
+                    app:srcCompat="@drawable/weakness_table" />
             </LinearLayout>
         </LinearLayout>
 
@@ -211,9 +212,33 @@
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
-                <ImageView android:id="@+id/ivSelectMember1" android:layout_width="56dp" android:layout_height="56dp" android:layout_margin="8dp" android:src="@android:drawable/ic_input_add" android:contentDescription="Select Member 1" android:scaleType="fitCenter" />
-                <ImageView android:id="@+id/ivSelectMember2" android:layout_width="56dp" android:layout_height="56dp" android:layout_margin="8dp" android:src="@android:drawable/ic_input_add" android:contentDescription="Select Member 2" android:scaleType="fitCenter" />
-                <ImageView android:id="@+id/ivSelectMember3" android:layout_width="56dp" android:layout_height="56dp" android:layout_margin="8dp" android:src="@android:drawable/ic_input_add" android:contentDescription="Select Member 3" android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/ivSelectMember1"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_margin="8dp"
+                    android:contentDescription="Select Member 1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_crew_button" />
+
+                <ImageView
+                    android:id="@+id/ivSelectMember2"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_margin="8dp"
+                    android:contentDescription="Select Member 2"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_crew_button" />
+
+                <ImageView
+                    android:id="@+id/ivSelectMember3"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_margin="8dp"
+                    android:contentDescription="Select Member 3"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_crew_button" />
             </LinearLayout>
         </LinearLayout>
 

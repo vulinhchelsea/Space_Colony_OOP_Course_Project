@@ -34,11 +34,11 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="12dp"
-        android:src="@android:drawable/ic_menu_help"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical" />
+        android:src="@drawable/hint_button"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Left Side Content (65%) -->
     <TextView
