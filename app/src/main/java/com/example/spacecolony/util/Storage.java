@@ -13,6 +13,7 @@ public class Storage {
     private static final String STORAGE = "ColonyStorage";
     private static final String KEY_MISSIONS = "completed_missions";
     private static final String KEY_RECRUITED = "total_recruited";
+    private static final String KEY_KILLS = "total_kills";
     private static final String KEY_THREATS = "current_threats";
     private static final String KEY_CREW = "crew_list";
     
@@ -58,13 +59,20 @@ public class Storage {
         saveCrewMembers(c, list);
         getPrefs(c).edit().putInt(KEY_RECRUITED, getTotalRecruited(c) + 1).apply();
     }
-    // counting for records
+
+    // stats counting for records
     public static int getTotalRecruited(Context c) { return getPrefs(c).getInt(KEY_RECRUITED, 0); }
     public static int getCompletedMissions(Context c) { return getPrefs(c).getInt(KEY_MISSIONS, 0); }
+    public static int getTotalKills(Context c) { return getPrefs(c).getInt(KEY_KILLS, 0); }
+
+    public static void addKill(Context c) {
+        getPrefs(c).edit().putInt(KEY_KILLS, getTotalKills(c) + 1).apply();
+    }
 
     public static void finishMission(Context c) {
         getPrefs(c).edit().putInt(KEY_MISSIONS, getCompletedMissions(c) + 1).remove(KEY_THREATS).apply();
     }
+
     // threats management
     public static void saveCurrentThreats(Context c, List<Threat> t) {
         getPrefs(c).edit().putString(KEY_THREATS, new Gson().toJson(t)).apply();

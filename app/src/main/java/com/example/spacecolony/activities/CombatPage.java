@@ -110,6 +110,12 @@ public class CombatPage extends AppCompatActivity {
 
         waiting = true;
         log(manager.executeAttack(c, t));
+        
+        // Check if enemy was killed
+        if (t.isDefeated()) {
+            Storage.addKill(this);
+        }
+
         updateUI();
 
         if (manager.isVictory()) end(true);

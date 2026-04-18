@@ -16,9 +16,9 @@ public class RecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
 
-        // load status
+        // load status from Storage
         ((TextView) findViewById(R.id.txt_recruit_count)).setText("recruited " + Storage.getTotalRecruited(this) + " members");
-        ((TextView) findViewById(R.id.txt_kill_count)).setText("killed 0 enemies");
+        ((TextView) findViewById(R.id.txt_kill_count)).setText("killed " + Storage.getTotalKills(this) + " enemies");
         
         TextView missionTxt = findViewById(R.id.txt_mission_count);
         if (missionTxt != null) missionTxt.setText("accomplished " + Storage.getCompletedMissions(this) + " missions");
