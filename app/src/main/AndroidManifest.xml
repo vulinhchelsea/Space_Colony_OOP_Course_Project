@@ -13,28 +13,39 @@
         android:theme="@style/Theme.SpaceColony">
         <activity
             android:name=".activities.CombatPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.RecruitmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.RecruimentActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.RecordActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.TeamActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.MissionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.TrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.MedBayActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
