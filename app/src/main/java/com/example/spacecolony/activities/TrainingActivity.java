@@ -41,7 +41,7 @@ public class TrainingActivity extends AppCompatActivity {
     private void showHelp() {
         new AlertDialog.Builder(this)
             .setTitle("Training Help")
-            .setMessage("Improve your crew's skills here! Training grants XP to your members. Note that the simulator has a cooldown after use.")
+            .setMessage("Improve your crew's skills here! Training grants XP to your members. Note that the simulator has a cooldown after use. Each LV is 100 EXP, if you gain 100 EXP for a crew, they will level up and gain stats!")
             .setPositiveButton("OK", null)
             .show();
     }

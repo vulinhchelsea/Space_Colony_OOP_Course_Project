@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="start training (+20 xp)"
+        android:text="start training (+25 EXP)"
         android:backgroundTint="#212121"
         android:textColor="#FFFFFF"
         app:cornerRadius="12dp" />
