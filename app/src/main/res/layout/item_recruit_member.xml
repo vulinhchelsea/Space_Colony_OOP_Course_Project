@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
+                android:contentDescription="Avatar"
                 android:src="@android:drawable/ic_menu_gallery" />
         </androidx.cardview.widget.CardView>
 
@@ -52,16 +53,15 @@
                 android:id="@+id/txt_recruit_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Role: Soldier"
+                android:text="Role"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                android:layout_marginTop="2dp" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/txt_recruit_stats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HP: 100 | ATK: 15 | DEF: 10"
+                android:text="EN: 100 | SK: 15 | RE: 10"
                 android:textSize="13sp"
                 android:layout_marginTop="6dp"
                 android:textColor="#2E7D32"
@@ -79,8 +79,7 @@
             android:backgroundTint="#212121"
             android:textColor="#FFFFFF"
             android:paddingHorizontal="12dp"
-            app:cornerRadius="0dp"
-            android:elevation="4dp" />
+            app:cornerRadius="0dp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

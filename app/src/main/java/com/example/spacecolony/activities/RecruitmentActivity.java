@@ -6,9 +6,6 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.spacecolony.R;
@@ -31,14 +28,6 @@ public class RecruitmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recruitment);
         
         tv = findViewById(R.id.tv_recruit_status);
-        View left = findViewById(R.id.left_container);
-        if (left != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(left, (v, insets) -> {
-                Insets s = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(s.left, s.top, 0, s.bottom);
-                return insets;
-            });
-        }
 
         RecyclerView rv = findViewById(R.id.recycler_recruitment);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -58,7 +47,7 @@ public class RecruitmentActivity extends AppCompatActivity {
 
     private void refresh() {
         boolean ok = sim.isRecruitAvailable(this);
-        tv.setText(ok ? "open" : "closed...");
+        tv.setText(ok ? "Status: OPEN" : "Status: CLOSED (Cooldown)");
         list.clear();
         if (ok) {
             list.add(new Medic(""));
